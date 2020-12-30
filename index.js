@@ -6,8 +6,8 @@ const transfers = require('./controllers/transfers.js');
 const app = express();
 
 //code to test of APIs
-app.use('/', () => {
-    transfers.incomingTransfers();
+app.get('/', (req, res) => {
+    res.send(transfers.getIncomingTransfers());
 });
 
 app.listen(PORT, () => {
