@@ -166,3 +166,49 @@ exports.getTemplatePackages = (deliveryId) => {
             console.log(err);
         });
 }
+
+
+/* create templates */
+exports.createTransferTemplates = (data) => {
+    axios.post(`${transferUrl}/templates?licenseNumber=${config.config.licenseNo}`, data, { headers: headers })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+/* update existing template */
+exports.updateTransferTemplates = (data) => {
+    axios.put(`${transferUrl}/templates?licenseNumber=${config.config.licenseNo}`, data, { headers: headers })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+/* delete template */
+exports.deleteTemplateById = (id) => {
+    axios.delete(`${transferUrl}/templates/${id}?licenseNumber=${config.config.licenseNo}`, { headers: headers })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
+
+
+/* get transfer types*/
+exports.getTransferTypes = () => {
+    axios.get(`${transferUrl}/types?licenseNumber=${config.config.licenseNo}`, { headers: headers })
+        .then((res) => {
+            return res.data;
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+}
