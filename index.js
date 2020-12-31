@@ -2,6 +2,7 @@ const express = require('express');
 
 const PORT = process.env.port || 5000;
 const transfers = require('./lib/controllers/transfers.js');
+const strains = require('./lib/controllers/strains.js');
 const configParams = require('./lib/controllers/paramsConfig.js');
 
 const app = express();
@@ -19,7 +20,8 @@ app.get('/', (req, res) => {
         }
     )
     setTimeout(() => {
-        res.send(transfers.getIncomingTransfers());
+        transfers.getIncomingTransfers()
+        res.send(strains.getActiveStrains());
     }, 200);
 });
 
