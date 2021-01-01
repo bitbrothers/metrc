@@ -1,15 +1,18 @@
 {
-  "name": "metrcmodule",
-  "version": "1.0.0",
-  "description": "",
+  "name": "metrc",
+  "version": "0.1.0",
+  "description": "Metrc REST API Node Wrapper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "example": "node example/index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
-    "express": "^4.17.1"
+    "axios": "^0.21.1"
+  },
+  "devDependencies" : {
+    "dotenv": "^8.2.0"
   }
 }
