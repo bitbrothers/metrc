@@ -1,0 +1,24 @@
+{
+  "name": "metrc",
+  "version": "0.1.0",
+  "description": "Metrc middleware",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitbrothers/metrc.git"
+  },
+  "keywords": [
+    "metrc",
+    "node",
+    "wrapper"
+  ],
+  "author": "Sobin George Thomas <sobingt@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bitbrothers/metrc/issues"
+  },
+  "homepage": "https://github.com/bitbrothers/metrc#readme"
+}
