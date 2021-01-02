@@ -54,3 +54,55 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       }
     );
+
+##### Check Deliveries of a particular Transfer by Id
+    
+    //A merchant makes a tranfer of Deliveries to the customer
+
+    const transfer = merchant.getTransfer(transferId);
+    let deliveries = transfer.getDeliveries();
+
+
+##### Check Packages in a Delivery of a particular Transfer
+    
+    //A merchant makes a transfer of Deliveries containing Packages to the customer
+
+    const transfer = merchant.getTransfer(transferId);
+    const deliveries = transfer.getDelivery(deliveryId);
+    let packages = delivery.getPackages();
+
+##### Check Wholesale Packages in a Delivery of a particular Transfer 
+    
+    //A merchant makes a transfer of Deliveries containing wholesale Packages to the customer
+
+    const transfer = merchant.getTransfer(transferId);
+    const deliveries = transfer.getDelivery(deliveryId);
+    let wholesalePackages = delivery.getWholesalePackages();
+
+##### Check Packages which requires labtest, in a Delivery of a particular Transfer 
+    
+    //A merchant makes a transfer of Deliveries containing Packages to the customer
+
+    const transfer = merchant.getTransfer(transferId);
+    const deliveries = transfer.getDelivery(deliveryId);
+    let labTestBatchPackages = delivery.getlabTestBatchPackages();
+
+##### Check Package states in a Delivery of a particular Transfer 
+    
+    //A merchant makes a transfer of Deliveries containing Packages to the customer
+
+    const transfer = merchant.getTransfer(transferId);
+    const deliveries = transfer.getDelivery(deliveryId);
+    let packageStates = delivery.getPackageStates();
+
+##### Check templates for transfers
+    
+    //A merchant makes a transfer to a customer
+
+    let templates = merchant.getTransferTemplates();
+
+##### Check transfer types
+    
+    //A merchant makes a transfer to a customer
+
+    let transfetTypes = merchant.getTransferTypes();
