@@ -15,10 +15,9 @@ This module helps you intregrate metrc REST APIs to your node project.
       userkey:"user-key"
      });
     
-##### Check Merchant's Incoming Transfer
+##### Check Merchant's Incoming Transfers
     
-    const transfer = new metrc.Transfer(merchant);
-    transfer.getIncomingTransfers(
+    merchant.getIncomingTransfers(
       {
         lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
         lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
@@ -29,10 +28,22 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       }
     );
-##### Check Merchant's Outgoing Transfer
+##### Check Merchant's Outgoing Transfers
     
-    const transfer = new metrc.Transfer(merchant);
-    transfer.getOutgoingTransfers(
+    merchant.getOutgoingTransfers(
+      {
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      },
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
+##### Check Merchant's Rejected Transfers
+    
+    merchant.getRejectedTransfers(
       {
         lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
         lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
