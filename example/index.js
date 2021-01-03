@@ -10,8 +10,8 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
-let delivery = merchant.getDelivery(34601);
-merchant.getWholesalePackages(delivery, function (data, error) {
+let package = merchant.getPackage(98202);
+merchant.getRequiredLabTestBatches(package, function (data, error) {
   if (error) {
     console.log(error)
   } else {
