@@ -92,9 +92,15 @@ This module helps you intregrate metrc REST APIs to your node project.
     
     //A merchant makes a transfer of Deliveries containing Packages to the customer
 
-    const transfer = merchant.getTransfer(transferId);
-    const deliveries = transfer.getDelivery(deliveryId);
-    let labTestBatchPackages = delivery.getlabTestBatchPackages();
+    let package = merchant.getPackage(98202);
+    merchant.getRequiredLabTestBatches(package, function (data, error) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(data);
+      }
+    });
+
 
 ##### Check Package states in a Delivery of a particular Transfer 
     
