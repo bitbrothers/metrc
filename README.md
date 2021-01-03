@@ -70,8 +70,7 @@ This module helps you intregrate metrc REST APIs to your node project.
 ##### Check Packages in a Delivery of a particular Transfer
     
     //A merchant makes a transfer of Deliveries containing Packages to the customer
-    let transfer = new metrc.Transfer({});
-    let delivery = transfer.getDelivery(34600);
+    let delivery = merchant.getDelivery(34600);
     merchant.getPackages(delivery, function (data, error) {
       if (error) {
         console.log(error)
