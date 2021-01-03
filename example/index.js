@@ -11,7 +11,7 @@ const merchant = new metrc.Merchant({
 });
 
 let delivery = merchant.getDelivery(34601);
-merchant.getPackages(delivery, function (data, error) {
+merchant.getWholesalePackages(delivery, function (data, error) {
   if (error) {
     console.log(error)
   } else {
