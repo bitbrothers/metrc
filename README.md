@@ -107,6 +107,15 @@ This module helps you intregrate metrc REST APIs to your node project.
     //A merchant makes a transfer of Deliveries containing Packages to the customer
     
 
+##### Delete External incoming transfer
+    merchant.deleteIncomingTransfer(12344, function (data, error) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(data);
+    }
+  });
+
 ##### Check templates for transfers
     
     //A merchant makes a transfer to a customer
@@ -146,7 +155,7 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       }
     });
-    
+
 ##### Check transfer types
     
     //A merchant makes a transfer to a customer

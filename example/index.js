@@ -11,8 +11,7 @@ const merchant = new metrc.Merchant({
 });
 
 
-let template = merchant.getTransferTemplate();
-merchant.getTransferTemplateDeliveries(template, function (data, error) {
+merchant.deleteIncomingTransfer(12344, function (data, error) {
   if (error) {
     console.log(error);
   } else {
