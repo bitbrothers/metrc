@@ -113,24 +113,29 @@ This module helps you intregrate metrc REST APIs to your node project.
 ##### Check templates for transfers
     
     //A merchant makes a transfer to a customer
-
-   merchant.getTemplates({
-      lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
-      lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
-    }, function (data, error) {
-      if (error) {
-        console.log(error)
-      } else {
-        console.log(data);
-      }
-    });
+    merchant.getTemplates({
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      }, function (data, error) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log(data);
+        }
+      });
 
 ##### Check deliveries in a template
     
     //A merchant makes a transfer to a customer
+    let template = merchant.getTransferTemplate();
+    merchant.getTransferTemplateDeliveries(template, function (data, error) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(data);
+        }
+      });
 
-    const template = merchant.getTransferTemplate(templateId);
-    let deliveries = template.getDeliveries();
 
 
 ##### Check Packages in a delivery in a template
