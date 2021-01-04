@@ -10,7 +10,7 @@ const merchant = new metrc.Merchant({
 });
 
 
-merchant.getPlantGrowthPhases(
+merchant.getPlantAdditiveTypes(
   function response(data, error) {
       if(error)
         throw error
