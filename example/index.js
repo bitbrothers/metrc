@@ -10,7 +10,7 @@ const merchant = new metrc.Merchant({
 });
 
 
-merchant.getSalesRecieptById( 1234,
+merchant.getSalesTransactions(
   function response(data, error) {
     if (error)
       throw error
