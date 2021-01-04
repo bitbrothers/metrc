@@ -9,16 +9,14 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
-let incomingTransfers = []
-merchant.getIncomingTransfers(
-  {
-    lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
-    lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
-  },
+
+merchant.getActiveSalesReceipts({
+  lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+  lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+},
   function response(data, error) {
-    if (error) throw error;
-    incomingTransfers = data;
-    console.log(incomingTransfers)
+    if (error)
+      throw error
+    console.log(data);
   }
 );
-
