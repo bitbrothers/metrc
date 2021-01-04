@@ -10,10 +10,7 @@ const merchant = new metrc.Merchant({
 });
 
 
-merchant.getSalesReciepts({
-  lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
-  lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
-}, false,
+merchant.getSalesRecieptById( 1234,
   function response(data, error) {
     if (error)
       throw error

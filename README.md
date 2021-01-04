@@ -137,3 +137,13 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       }
     );
+
+ ##### Get receipt by Id
+ receiptId = 12345;
+  merchant.getSalesRecieptById(receiptId,
+    function response(data, error) {
+      if (error)
+        throw error
+      console.log(data);
+    }
+  );
