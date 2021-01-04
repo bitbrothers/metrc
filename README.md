@@ -148,21 +148,41 @@ This module helps you intregrate metrc REST APIs to your node project.
       }
     );
 
- ##### Get plants by Id 
+ ##### Get plant by Id 
     const plantId = 23245;
-    merchant.getPlants(plantId,
+    merchant.getPlant(plantId,
     function response(data, error) {
         if(error)
           throw error
       console.log(data);
     });
  
-  ##### Get plants by Label
+  ##### Get plant by Label
     const plantLabel = '';
-    merchant.getPlants(plantLabel,
+    merchant.getPlant(plantLabel,
     function response(data, error) {
         if(error)
           throw error
       console.log(data);
     });
  
+ ##### Get Vegetative | flowering | onhold | inactive |  additives plants
+    /** get vegetative plants => plantKey = 'vegetative'
+    *  get flowering plants => plantKey = 'flowering'
+    *  get plants that are on hold => plantKey = 'onhold'
+    *  get plants that are inactive  => plantKey = 'inactive'
+    *  get additives plants => plantKey = 'additives'
+    */
+    const plantKey = 'vegetative';
+    merchant.getPlants(
+      {
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      },
+      plantKey,
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
