@@ -9,12 +9,8 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
-
-merchant.getSalesTransactionsByRange(
-  {
-    lastModifiedEnd: "2020-08-19",
-    lastModifiedStart: "2020-08-18",
-  },
+const plantId = 23245;
+merchant.getPlants(plantId,
   function response(data, error) {
       if(error)
         throw error
