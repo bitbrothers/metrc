@@ -9,19 +9,8 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
-/** get vegetative plants => plantKey = 'vegetative'
- *  get flowering plants => plantKey = 'flowering'
- *  get plants that are on hold => plantKey = 'onhold'
- *  get plants that are inactive  => plantKey = 'inactive'
- *  get additives plants => plantKey = 'additives'
- */
-const plantKey = 'vegetative';
-merchant.getPlants(
-  {
-    lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
-    lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
-  },
-  plantKey,
+
+merchant.getPlantGrowthPhases(
   function response(data, error) {
       if(error)
         throw error
