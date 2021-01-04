@@ -105,10 +105,7 @@ This module helps you intregrate metrc REST APIs to your node project.
 ##### Check Package states in a Delivery of a particular Transfer 
     
     //A merchant makes a transfer of Deliveries containing Packages to the customer
-
-    const transfer = merchant.getTransfer(transferId);
-    const deliveries = transfer.getDelivery(deliveryId);
-    let packageStates = delivery.getPackageStates();
+    
 
 ##### Check templates for transfers
     
@@ -141,10 +138,15 @@ This module helps you intregrate metrc REST APIs to your node project.
 ##### Check Packages in a delivery in a template
     
     //A merchant makes a transfer to a customer
-
-    const template = merchant.getTransferTemplate(templateId);
-    const delivery = template.getDelivery();
-    let packages = delivery.packages();
+    let delivery = merchant.getDelivery(34600);
+    merchant.getPackages(delivery, function (data, error) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(data);
+      }
+    });
+    
 ##### Check transfer types
     
     //A merchant makes a transfer to a customer
