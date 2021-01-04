@@ -157,3 +157,12 @@ This module helps you intregrate metrc REST APIs to your node project.
       console.log(data);
     });
  
+  ##### Get plants by Label
+    const plantLabel = '';
+    merchant.getPlants(plantLabel,
+    function response(data, error) {
+        if(error)
+          throw error
+      console.log(data);
+    });
+ 
