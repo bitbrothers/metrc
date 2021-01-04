@@ -121,3 +121,19 @@ This module helps you intregrate metrc REST APIs to your node project.
     //A merchant makes a transfer to a customer
 
     let transfetTypes = merchant.getTransferTypes();
+
+ ##### Get Active and Inactive sales receipts
+    /* set isActive flag to true for accessing active receipts and false for inactive*/
+    let isActive = true;
+      merchant.getIncomingTransfers(
+      {
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      },
+      isActive,
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
