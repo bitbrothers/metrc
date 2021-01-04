@@ -205,4 +205,23 @@ This module helps you intregrate metrc REST APIs to your node project.
         }
       );
 
+  ##### Get plant waste methods
+    merchant.getPlantWasteMethods(
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
+
+  ##### Get plant waste reasons
+    merchant.getPlantWasteReasons(
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
+
+
 

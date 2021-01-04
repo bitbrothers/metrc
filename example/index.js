@@ -10,7 +10,15 @@ const merchant = new metrc.Merchant({
 });
 
 
-merchant.getPlantAdditiveTypes(
+merchant.getPlantWasteMethods(
+  function response(data, error) {
+      if(error)
+        throw error
+    console.log(data);
+  }
+);
+
+merchant.getPlantWasteReasons(
   function response(data, error) {
       if(error)
         throw error
