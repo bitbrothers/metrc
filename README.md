@@ -168,7 +168,21 @@ This module helps you intregrate metrc REST APIs to your node project.
       transactionTwo
     ]
 
+    /*Post sales receipt data*/
     merchant.postSalesReceipt({
+      SalesDateTime: "2016-10-04T16:44:53.000",
+      SalesCustomerType: "Consumer",
+      PatientLicenseNumber: null,
+      CaregiverLicenseNumber: null,
+      IdentificationMetho: null,
+    }, transactionArray, function (data, error) {
+      if (error)
+        throw error;
+        console.log(data);
+    });
+
+    /*Put sales receipt data*/
+    merchant.putSalesReceipt({
       SalesDateTime: "2016-10-04T16:44:53.000",
       SalesCustomerType: "Consumer",
       PatientLicenseNumber: null,
