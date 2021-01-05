@@ -57,10 +57,14 @@ This module helps you intregrate metrc REST APIs to your node project.
 
 ##### Check Deliveries of a particular Transfer by Id
     
-    //A merchant makes a tranfer of Deliveries to the customer
-
-    const transfer = merchant.getTransfer(transferId);
-    let deliveries = transfer.getDeliveries();
+    let transfer = merchant.getTransfer(1234);
+    merchant.getDeliveries(transfer, function (data, error) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log(data);
+        }
+   });
 
 
 ##### Check Packages in a Delivery of a particular Transfer
@@ -116,11 +120,13 @@ This module helps you intregrate metrc REST APIs to your node project.
     const template = merchant.getTransferTemplate(templateId);
     const delivery = template.getDelivery();
     let packages = delivery.packages();
+    
 ##### Check transfer types
     
     //A merchant makes a transfer to a customer
 
     let transfetTypes = merchant.getTransferTypes();
+
 
 ##### Check Facilities 
 
