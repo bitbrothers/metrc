@@ -1,3 +1,4 @@
+const Transfer = require("../lib/classes/Transfer");
 const metrc = require("../lib/metrc");
 require('dotenv').config()
 metrc.config({
@@ -9,6 +10,16 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
+
+let delivery = merchant.getDelivery(34601);
+merchant.getPackages(delivery, function (data, error) {
+  if (error) {
+    console.log(error)
+  } else {
+    console.log(data);
+  }
+})
+
 let transfer = merchant.getTransfer(1234);
 merchant.getDeliveries(transfer, function (data, error) {
     if (error) {
@@ -17,4 +28,5 @@ merchant.getDeliveries(transfer, function (data, error) {
       console.log(data);
     }
 });
+
 
