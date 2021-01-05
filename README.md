@@ -120,8 +120,17 @@ This module helps you intregrate metrc REST APIs to your node project.
     const template = merchant.getTransferTemplate(templateId);
     const delivery = template.getDelivery();
     let packages = delivery.packages();
+    
 ##### Check transfer types
     
     //A merchant makes a transfer to a customer
 
     let transfetTypes = merchant.getTransferTypes();
+
+
+##### Check Facilities 
+
+merchant.getFacilities(function response(data, error) {
+    if (error) throw error;
+    console.log(data);
+  });
