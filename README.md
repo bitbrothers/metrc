@@ -223,5 +223,27 @@ This module helps you intregrate metrc REST APIs to your node project.
       }
     );
 
+ ##### Get a package by Id
+    const packageId = 41234;
+    merchant.getPackage(packageId,
+      function (data, error) {
+        if (error)
+          throw error;
+        console.log(data);
+      });
+
+ ##### Get a package by label
+    const packageLabel = "1AWFF011232022000002578";
+    merchant.getPackage(packageLabel,
+      function (data, error) {
+        if (error)
+          throw error;
+        console.log(data);
+      });
+
+
+
+
+
 
 

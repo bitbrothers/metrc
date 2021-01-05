@@ -9,19 +9,18 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
-
-merchant.getPlantWasteMethods(
-  function response(data, error) {
-      if(error)
-        throw error
+const packageId = 41234;
+merchant.getPackage(packageId,
+  function (data, error) {
+    if (error)
+      throw error;
     console.log(data);
-  }
-);
+  });
 
-merchant.getPlantWasteReasons(
-  function response(data, error) {
-      if(error)
-        throw error
+const packageLabel = "1AWFF011232022000002578";
+merchant.getPackage(packageLabel,
+  function (data, error) {
+    if (error)
+      throw error;
     console.log(data);
-  }
-);
+  });
