@@ -11,8 +11,11 @@ const merchant = new metrc.Merchant({
 });
 
 
+let package = merchant.getPackage(98202);
+merchant.getRequiredLabTestBatches(package, function (data, error) {
 let delivery = merchant.getDelivery(34601);
 merchant.getWholesalePackages(delivery, function (data, error) {
+
   if (error) {
     console.log(error)
   } else {
