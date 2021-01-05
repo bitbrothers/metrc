@@ -69,7 +69,7 @@ This module helps you intregrate metrc REST APIs to your node project.
 
     const transfer = merchant.getTransfer(transferId);
     const deliveries = transfer.getDelivery(deliveryId);
-    let packages = delivery.getPackages();
+    let packages = delivery.getTransferPackages();
 
 ##### Check Wholesale Packages in a Delivery of a particular Transfer 
     
@@ -241,7 +241,24 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       });
 
-
+ ##### Get Packages by active | onhold | inactive states
+      /** 
+      *  get active packages => plantKey = 'active'
+      *  get packages that are on hold => plantKey = 'onhold'
+      *  get inactive packages  => plantKey = 'inactive'
+      */
+    const packageKey = "";
+    merchant.getPackages(
+      {
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      },
+      packageKey,
+      function (data, error) {
+        if (error)
+          throw error;
+        console.log(data);
+      });
 
 
 
