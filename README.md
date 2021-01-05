@@ -224,6 +224,19 @@ This module helps you intregrate metrc REST APIs to your node project.
   ];
 
   let transactionDate = '2019-01-02';
+
+  //create sales transaction
+  merchant.createSalesTransaction(
+    transactionDate,
+    transactionArray,
+    function (data, error) {
+      if (error)
+        throw error;
+      console.log(data);
+    }
+  );
+
+  //put sales transaction
   merchant.createSalesTransaction(
     transactionDate,
     transactionArray,
