@@ -195,13 +195,44 @@ This module helps you intregrate metrc REST APIs to your node project.
     });
 
  ##### Delete Sales receipt by id
-  const receiptId = 12324;
-  merchant.deleteReceipt(receiptId, function (data, error) {
-    if (error)
-      throw error;
-    console.log(data);
+    const receiptId = 12324;
+    merchant.deleteReceipt(receiptId, function (data, error) {
+      if (error)
+        throw error;
+      console.log(data);
+    });
+
+
+ ##### Create sales transaction
+    const transactionOne = new metrc.PostTransaction({
+    PackageLabel: "ABCDEF012345670000010331",
+    Quantity: 1.0,
+    UnitOfMeasure: "Ounces",
+    TotalAmount: 9.99
   });
-  
+
+  const transactionTwo = new metrc.PostTransaction({
+    PackageLabel: "ABBBR012345670000010331",
+    Quantity: 2.0,
+    UnitOfMeasure: "Ounces",
+    TotalAmount: 18.99
+  });
+
+  let transactionArray = [
+    transactionOne,
+    transactionTwo
+  ];
+
+  let transactionDate = '2019-01-02';
+  merchant.createSalesTransaction(
+    transactionDate,
+    transactionArray,
+    function (data, error) {
+      if (error)
+        throw error;
+      console.log(data);
+    }
+  );
  ##### Get plant by Id 
     const plantId = 23245;
     merchant.getPlant(plantId,

@@ -26,35 +26,15 @@ const transactionTwo = new metrc.PostTransaction({
 let transactionArray = [
   transactionOne,
   transactionTwo
-]
+];
 
-merchant.postSalesReceipt({
-  SalesDateTime: "2016-10-04T16:44:53.000",
-  SalesCustomerType: "Consumer",
-  PatientLicenseNumber: null,
-  CaregiverLicenseNumber: null,
-  IdentificationMetho: null,
-}, transactionArray, function (data, error) {
-  if (error)
-    throw error;
-  console.log(data);
-});
-
-merchant.putSalesReceipt({
-  SalesDateTime: "2016-10-04T16:44:53.000",
-  SalesCustomerType: "Consumer",
-  PatientLicenseNumber: null,
-  CaregiverLicenseNumber: null,
-  IdentificationMetho: null,
-}, transactionArray, function (data, error) {
-  if (error)
-    throw error;
-  console.log(data);
-});
-
-const receiptId = 12324;
-merchant.deleteReceipt(receiptId, function (data, error) {
-  if (error)
-    throw error;
-  console.log(data);
-});
+let transactionDate = '2019-01-02';
+merchant.createSalesTransaction(
+  transactionDate,
+  transactionArray,
+  function (data, error) {
+    if (error)
+      throw error;
+    console.log(data);
+  }
+);
