@@ -193,6 +193,15 @@ This module helps you intregrate metrc REST APIs to your node project.
         throw error;
         console.log(data);
     });
+
+ ##### Delete Sales receipt by id
+  const receiptId = 12324;
+  merchant.deleteReceipt(receiptId, function (data, error) {
+    if (error)
+      throw error;
+    console.log(data);
+  });
+  
  ##### Get plant by Id 
     const plantId = 23245;
     merchant.getPlant(plantId,

@@ -37,7 +37,7 @@ merchant.postSalesReceipt({
 }, transactionArray, function (data, error) {
   if (error)
     throw error;
-    console.log(data);
+  console.log(data);
 });
 
 merchant.putSalesReceipt({
@@ -49,5 +49,12 @@ merchant.putSalesReceipt({
 }, transactionArray, function (data, error) {
   if (error)
     throw error;
-    console.log(data);
+  console.log(data);
+});
+
+const receiptId = 12324;
+merchant.deleteReceipt(receiptId, function (data, error) {
+  if (error)
+    throw error;
+  console.log(data);
 });
