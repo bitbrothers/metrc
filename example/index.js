@@ -27,7 +27,7 @@ const transactionTwo = new metrc.PostTransaction({
 let transactionArray = [
   transactionOne,
   transactionTwo
-]
+];
 
 merchant.postSalesReceipt({
   SalesDateTime: "2016-10-04T16:44:53.000",
@@ -61,8 +61,18 @@ merchant.getPlantWasteMethods(
 });
 
 merchant.deleteIncomingTransfer(12344, function (data, error) {
+  if(error)
+  throw error
+console.log(data);
+});
+
 let package = merchant.getPackage(98202);
 merchant.getRequiredLabTestBatches(package, function (data, error) {
+  if(error)
+  throw error
+console.log(data);
+});
+
 let delivery = merchant.getDelivery(34601);
 merchant.getWholesalePackages(delivery, function (data, error) {
   if(error)
