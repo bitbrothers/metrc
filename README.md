@@ -70,6 +70,7 @@ This module helps you intregrate metrc REST APIs to your node project.
 ##### Check Packages in a Delivery of a particular Transfer
     
     //A merchant makes a transfer of Deliveries containing Packages to the customer
+
     let delivery = merchant.getDelivery(34600);
     merchant.getPackages(delivery, function (data, error) {
       if (error) {
@@ -78,7 +79,6 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       }
     });
-      
 
 ##### Check Wholesale Packages in a Delivery of a particular Transfer 
     
@@ -262,9 +262,45 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       }
     );
+    
+ ##### Get a package by Id
+    const packageId = 41234;
+    merchant.getPackage(packageId,
+      function (data, error) {
+        if (error)
+          throw error;
+        console.log(data);
+      });
+
+ ##### Get a package by label
+    const packageLabel = "1AWFF011232022000002578";
+    merchant.getPackage(packageLabel,
+      function (data, error) {
+        if (error)
+          throw error;
+        console.log(data);
+      });
+
+ ##### Get Packages by active | onhold | inactive states
+      /** 
+      *  get active packages => plantKey = 'active'
+      *  get packages that are on hold => plantKey = 'onhold'
+      *  get inactive packages  => plantKey = 'inactive'
+      */
+    const packageKey = "";
+    merchant.getPackages(
+      {
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      },
+      packageKey,
+      function (data, error) {
+        if (error)
+          throw error;
+        console.log(data);
+      });
 
   ##### Check Facilities 
-
   merchant.getFacilities(function response(data, error) {
       if (error) throw error;
       console.log(data);
