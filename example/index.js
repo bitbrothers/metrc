@@ -11,21 +11,30 @@ const merchant = new metrc.Merchant({
 });
 
 
-merchant.deleteIncomingTransfer(12344, function (data, error) {
+merchant.getPlantWasteMethods(
+  function response(data, error) {
+      if(error)
+        throw error
+    console.log(data);
+});
 
+merchant.deleteIncomingTransfer(12344, function (data, error) {
 let package = merchant.getPackage(98202);
 merchant.getRequiredLabTestBatches(package, function (data, error) {
 let delivery = merchant.getDelivery(34601);
 merchant.getWholesalePackages(delivery, function (data, error) {
-  if (error) {
-    console.log(error);
-  } else {
+  if(error)
+        throw error
     console.log(data);
-  }
 });
 
-})
-
+merchant.getPlantWasteReasons(
+  function response(data, error) {
+      if(error)
+        throw error
+    console.log(data);
+  });
+  
 let transfer = merchant.getTransfer(1234);
 merchant.getDeliveries(transfer, function (data, error) {
     if (error) {

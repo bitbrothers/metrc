@@ -162,10 +162,110 @@ This module helps you intregrate metrc REST APIs to your node project.
 
     let transfetTypes = merchant.getTransferTypes();
 
+##### Get Active and Inactive sales receipts
+    /* set isActive flag to true for accessing active receipts and false for inactive*/
+    let isActive = true;
+      merchant.getIncomingTransfers(
+      {
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      },
+      isActive,
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
 
-##### Check Facilities 
+ ##### Get receipt by Id 
+    receiptId = 12345;
+    merchant.getSalesRecieptById(receiptId,
+      function response(data, error) {
+        if (error)
+          throw error
+        console.log(data);
+      }
+    );
 
-merchant.getFacilities(function response(data, error) {
-    if (error) throw error;
-    console.log(data);
-  });
+ ##### Get plant by Id 
+    const plantId = 23245;
+    merchant.getPlant(plantId,
+    function response(data, error) {
+        if(error)
+          throw error
+      console.log(data);
+    });
+ 
+  ##### Get plant by Label
+    const plantLabel = '';
+    merchant.getPlant(plantLabel,
+    function response(data, error) {
+        if(error)
+          throw error
+      console.log(data);
+    });
+ 
+ ##### Get Vegetative | flowering | onhold | inactive |  additives plants
+    /** get vegetative plants => plantKey = 'vegetative'
+    *  get flowering plants => plantKey = 'flowering'
+    *  get plants that are on hold => plantKey = 'onhold'
+    *  get plants that are inactive  => plantKey = 'inactive'
+    *  get additives plants => plantKey = 'additives'
+    */
+    const plantKey = 'vegetative';
+    merchant.getPlants(
+      {
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      },
+      plantKey,
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
+
+  ##### Get plant growth phases
+    merchant.getPlantGrowthPhases(
+        function response(data, error) {
+            if(error)
+              throw error
+          console.log(data);
+        }
+      );
+
+  ##### Get plant Additive types
+    merchant.getPlantAdditiveTypes(
+        function response(data, error) {
+            if(error)
+              throw error
+          console.log(data);
+        }
+      );
+
+  ##### Get plant waste methods
+    merchant.getPlantWasteMethods(
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
+
+  ##### Get plant waste reasons
+    merchant.getPlantWasteReasons(
+      function response(data, error) {
+          if(error)
+            throw error
+        console.log(data);
+      }
+    );
+
+  ##### Check Facilities 
+
+  merchant.getFacilities(function response(data, error) {
+      if (error) throw error;
+      console.log(data);
+    });
