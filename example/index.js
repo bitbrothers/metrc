@@ -237,22 +237,46 @@ const destinations = [destinationData];
 //   console.log(data);
 // });
 
-const template1 = merchant.createTemplate(destinations);
-const template2 = merchant.createTemplate(destinations);
+// const template1 = merchant.createTemplate(destinations);
+// const template2 = merchant.createTemplate(destinations);
 
-merchant.postTemplates([template1, template2], function (data, error) {
+// merchant.postTemplates([template1, template2], function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// })
+
+// merchant.putTemplates([template1, template2], function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// })
+
+
+const transaction = new metrc.Transaction({
+  PackageLabel: "ABCDEF012345670000010331",
+  Quantity: 1.0,
+  UnitOfMeasure: "Ounces",
+  TotalAmount: 9.99
+});
+let transactionFormData = transaction.getFormData();
+console.log(transactionFormData);
+
+
+const sale = new metrc.Sale({
+  SalesDateTime: "2016-10-04T16:44:53.000",
+  SalesCustomerType: "Consumer",
+  PatientLicenseNumber: null,
+  CaregiverLicenseNumber: null,
+  IdentificationMethod: null,
+  Transactions: [transactionFormData]
+});
+const saleFormData = sale.getFormData();
+merchant.postSalesReceipt([saleFormData], function (data, error) {
   if (error)
     throw error;
   console.log(data);
-})
-
-merchant.putTemplates([template1, template2], function (data, error) {
-  if (error)
-    throw error;
-  console.log(data);
-})
-
-
+});
 
 // -----
 
