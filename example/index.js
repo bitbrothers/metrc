@@ -221,20 +221,37 @@ const destinationData = destination.getFormData();
 // const destinations = [destinationData1, destinationData2, destinationData3....];
 const destinations = [destinationData];
 //step 7: call create transfer function with shipper and destination data as parameters
-const transfer1 = merchant.createTransfer(shipperFormData, destinations);
-const transfer2 = merchant.createTransfer(shipperFormData, destinations);
-//step 8: call POST / PUT request with array of transfers
-merchant.postTransfers([transfer1, transfer2], function (data, error) {
-  if (error)
-    throw error;
-  console.log(data);
-});
+// const transfer1 = merchant.createTransfer(shipperFormData, destinations);
+// const transfer2 = merchant.createTemplate(shipperFormData, destinations);
+// console.log(transfer2);
+// //step 8: call POST / PUT request with array of transfers
+// merchant.postTransfers([transfer1, transfer2], function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// });
 
-merchant.putTransfers([transfer1, transfer2], function (data, error) {
+// merchant.putTransfers([transfer1, transfer2], function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// });
+
+const template1 = merchant.createTemplate(destinations);
+const template2 = merchant.createTemplate(destinations);
+
+merchant.postTemplates([template1, template2], function (data, error) {
   if (error)
     throw error;
   console.log(data);
-});
+})
+
+merchant.putTemplates([template1, template2], function (data, error) {
+  if (error)
+    throw error;
+  console.log(data);
+})
+
 
 
 // -----
