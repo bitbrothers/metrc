@@ -9,32 +9,66 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
-const transactionOne = new metrc.PostTransaction({
-  PackageLabel: "ABCDEF012345670000010331",
-  Quantity: 1.0,
-  UnitOfMeasure: "Ounces",
-  TotalAmount: 9.99
-});
+const ingredientOne = new metrc.PackageIngredient(
+  {
+    Package: "ABCDEF012345670000010041",
+    Quantity: 8.0,
+    UnitOfMeasure: "Ounces"
+  });
 
-const transactionTwo = new metrc.PostTransaction({
-  PackageLabel: "ABBBR012345670000010331",
-  Quantity: 2.0,
-  UnitOfMeasure: "Ounces",
-  TotalAmount: 18.99
-});
+const ingredientTwo = new metrc.PackageIngredient(
+  {
+    Package: "ABCDEF0123234220000010041",
+    Quantity: 7.0,
+    UnitOfMeasure: "Ounces"
+  });
 
-let transactionArray = [
-  transactionOne,
-  transactionTwo
-];
+const ingredientThree = new metrc.PackageIngredient(
+  {
+    Package: "ABCDESKDO123234220000830041",
+    Quantity: 2.0,
+    UnitOfMeasure: "Ounces"
+  });
 
-let transactionDate = '2019-01-02';
-merchant.createSalesTransaction(
-  transactionDate,
-  transactionArray,
+const packageData = new metrc.PostPackage(
+  {
+    Tag: "ABCDEF012345670000020201",
+    Location: null,
+    Item: "Buds",
+    Quantity: 16.0,
+    UnitOfMeasure: "Ounces",
+    PatientLicenseNumber: "X00001",
+    Note: "This is a note.",
+    IsProductionBatch: false,
+    ProductionBatchNumber: null,
+    IsDonation: false,
+    ProductRequiresRemediation: false,
+    UseSameItem: false,
+  });
+packageData.addIngredient(ingredientOne);
+packageData.addIngredient(ingredientTwo);
+
+const packageTwoData = new metrc.PostPackage(
+  {
+    Tag: "ABCSUUYRE2345670000020201",
+    Location: null,
+    Item: "Buds",
+    Quantity: 18.0,
+    UnitOfMeasure: "Ounces",
+    PatientLicenseNumber: "X00721",
+    Note: "This is a note.",
+    IsProductionBatch: false,
+    ProductionBatchNumber: null,
+    IsDonation: false,
+    ProductRequiresRemediation: false,
+    UseSameItem: false,
+  });
+packageTwoData.addIngredient(ingredientThree);
+
+merchant.createPackage(
+  [packageData, packageTwoData],
   function (data, error) {
     if (error)
       throw error;
     console.log(data);
-  }
-);
+  });
