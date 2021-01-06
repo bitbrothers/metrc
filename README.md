@@ -57,19 +57,28 @@ This module helps you intregrate metrc REST APIs to your node project.
 
 ##### Check Deliveries of a particular Transfer by Id
     
-    //A merchant makes a tranfer of Deliveries to the customer
-
-    const transfer = merchant.getTransfer(transferId);
-    let deliveries = transfer.getDeliveries();
+    let transfer = merchant.getTransfer(1234);
+    merchant.getDeliveries(transfer, function (data, error) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log(data);
+        }
+    });
 
 
 ##### Check Packages in a Delivery of a particular Transfer
     
     //A merchant makes a transfer of Deliveries containing Packages to the customer
 
-    const transfer = merchant.getTransfer(transferId);
-    const deliveries = transfer.getDelivery(deliveryId);
-    let packages = delivery.getTransferPackages();
+    let delivery = merchant.getDelivery(34600);
+    merchant.getPackages(delivery, function (data, error) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(data);
+      }
+    });
 
 ##### Check Wholesale Packages in a Delivery of a particular Transfer 
     
@@ -83,46 +92,77 @@ This module helps you intregrate metrc REST APIs to your node project.
     
     //A merchant makes a transfer of Deliveries containing Packages to the customer
 
-    const transfer = merchant.getTransfer(transferId);
-    const deliveries = transfer.getDelivery(deliveryId);
-    let labTestBatchPackages = delivery.getlabTestBatchPackages();
+    let package = merchant.getPackage(98202);
+    merchant.getRequiredLabTestBatches(package, function (data, error) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(data);
+      }
+    });
+
 
 ##### Check Package states in a Delivery of a particular Transfer 
     
     //A merchant makes a transfer of Deliveries containing Packages to the customer
+    
 
-    const transfer = merchant.getTransfer(transferId);
-    const deliveries = transfer.getDelivery(deliveryId);
-    let packageStates = delivery.getPackageStates();
+##### Delete External incoming transfer
+    merchant.deleteIncomingTransfer(12344, function (data, error) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(data);
+    }
+  });
 
 ##### Check templates for transfers
     
     //A merchant makes a transfer to a customer
-
-    let templates = merchant.getTransferTemplates();
+    merchant.getTemplates({
+        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
+        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
+      }, function (data, error) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log(data);
+        }
+      });
 
 ##### Check deliveries in a template
     
     //A merchant makes a transfer to a customer
+    let template = merchant.getTransferTemplate();
+    merchant.getTransferTemplateDeliveries(template, function (data, error) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(data);
+        }
+      });
 
-    const template = merchant.getTransferTemplate(templateId);
-    let deliveries = template.getDeliveries();
 
 
 ##### Check Packages in a delivery in a template
     
     //A merchant makes a transfer to a customer
+    let delivery = merchant.getDelivery(34600);
+    merchant.getPackages(delivery, function (data, error) {
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(data);
+      }
+    });
 
-    const template = merchant.getTransferTemplate(templateId);
-    const delivery = template.getDelivery();
-    let packages = delivery.packages();
 ##### Check transfer types
     
     //A merchant makes a transfer to a customer
 
     let transfetTypes = merchant.getTransferTypes();
 
- ##### Get Active and Inactive sales receipts
+##### Get Active and Inactive sales receipts
     /* set isActive flag to true for accessing active receipts and false for inactive*/
     let isActive = true;
       merchant.getIncomingTransfers(
@@ -222,7 +262,7 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       }
     );
-
+    
  ##### Get a package by Id
     const packageId = 41234;
     merchant.getPackage(packageId,
@@ -260,7 +300,8 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       });
 
-
-
-
-
+  ##### Check Facilities 
+  merchant.getFacilities(function response(data, error) {
+      if (error) throw error;
+      console.log(data);
+    });
