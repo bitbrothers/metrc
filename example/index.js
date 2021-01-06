@@ -271,13 +271,25 @@ const sale = new metrc.Sale({
   IdentificationMethod: null,
   Transactions: [transactionFormData]
 });
-const saleFormData = sale.getFormData();
-merchant.postSalesReceipt([saleFormData], function (data, error) {
+// const saleFormData = sale.getFormData(true);
+// merchant.postSalesReceipt([saleFormData], function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// });
+
+// const saleFormPutData = sale.getFormData(false, 12342);
+// merchant.putSalesReceipt([saleFormData], function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// });
+
+merchant.sendSalesTransaction([transactionFormData], '2015-01-08', true ,function (data, error) {
   if (error)
     throw error;
   console.log(data);
 });
-
 // -----
 
 // const transactionOne = new metrc.PostTransaction({
