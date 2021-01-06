@@ -65,7 +65,7 @@ const packageTwoData = new metrc.PostPackage(
   });
 packageTwoData.addIngredient(ingredientThree);
 
-merchant.createPackage(
+merchant.createTestingPackage(
   [packageData, packageTwoData],
   function (data, error) {
     if (error)
