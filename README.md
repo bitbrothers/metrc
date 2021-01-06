@@ -188,6 +188,51 @@ This module helps you intregrate metrc REST APIs to your node project.
       }
     );
 
+##### Create sales receipt
+    const transactionOne = new metrc.PostTransaction({
+      PackageLabel: "ABCDEF012345670000010331",
+      Quantity: 1.0,
+      UnitOfMeasure: "Ounces",
+      TotalAmount: 9.99
+    });
+
+    const transactionTwo = new metrc.PostTransaction({
+      PackageLabel: "ABBBR012345670000010331",
+      Quantity: 2.0,
+      UnitOfMeasure: "Ounces",
+      TotalAmount: 18.99
+    });
+
+    let transactionArray = [
+      transactionOne,
+      transactionTwo
+    ]
+
+    /*Post sales receipt data*/
+    merchant.postSalesReceipt({
+      SalesDateTime: "2016-10-04T16:44:53.000",
+      SalesCustomerType: "Consumer",
+      PatientLicenseNumber: null,
+      CaregiverLicenseNumber: null,
+      IdentificationMetho: null,
+    }, transactionArray, function (data, error) {
+      if (error)
+        throw error;
+        console.log(data);
+    });
+
+    /*Put sales receipt data*/
+    merchant.putSalesReceipt({
+      SalesDateTime: "2016-10-04T16:44:53.000",
+      SalesCustomerType: "Consumer",
+      PatientLicenseNumber: null,
+      CaregiverLicenseNumber: null,
+      IdentificationMetho: null,
+    }, transactionArray, function (data, error) {
+      if (error)
+        throw error;
+        console.log(data);
+    });
  ##### Get plant by Id 
     const plantId = 23245;
     merchant.getPlant(plantId,
