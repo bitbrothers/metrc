@@ -300,6 +300,14 @@ This module helps you intregrate metrc REST APIs to your node project.
         console.log(data);
       });
 
+ ##### Get package adjustment reasons
+      merchant.getPackageAdjustmentReasons(
+      function (data, error) {
+        if (error)
+          throw error;
+        console.log(data);
+      });
+      
   ##### Check Facilities 
   merchant.getFacilities(function response(data, error) {
       if (error) throw error;

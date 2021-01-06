@@ -10,7 +10,7 @@ const merchant = new metrc.Merchant({
   userkey: process.env.userkey,
 });
 
-merchant.getPackageTypes(
+merchant.getPackageAdjustmentReasons(
   function (data, error) {
     if (error)
       throw error;
