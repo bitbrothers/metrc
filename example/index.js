@@ -351,12 +351,12 @@ const merchant = new metrc.Merchant({
 //   console.log(data);
 // });
 
-const packageNote = new metrc.DeliveryPackage({
+const packageLocation = new metrc.DeliveryPackage({
   PackageLabel: "ABCDEF012345670000010041",
   Note: "Package note here."
 });
-const noteData = packageNote.getItemFormData();
-merchant.changePackageItem([noteData], function (data, error) {
+const locationData = packageLocation.getLocationFormData();
+merchant.changePackageLocation([locationData], function (data, error) {
   if (error)
     throw error;
   console.log(data);
