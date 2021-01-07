@@ -351,19 +351,29 @@ const merchant = new metrc.Merchant({
 //   console.log(data);
 // });
 
-const remediation = new metrc.DeliveryPackage({
-  PackageLabel: "ABCDEF012345670000020201",
-  RemediationMethodName: "Further Drying",
-  RemediationDate: "2016-10-17",
-  RemediationSteps: "Used hair dryer"
+// const remediation = new metrc.DeliveryPackage({
+//   PackageLabel: "ABCDEF012345670000020201",
+//   RemediationMethodName: "Further Drying",
+//   RemediationDate: "2016-10-17",
+//   RemediationSteps: "Used hair dryer"
+// });
+// const remediationData = remediation.getRemediationData();
+// merchant.remediatePackage([remediationData], function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// });
+
+const finishedPkg = new metrc.DeliveryPackage({
+  Label: "ABCDEF012345670000010041",
+  ActualDate: "2015-12-15"
 });
-const remediationData = remediation.getRemediationData();
-merchant.remediatePackage([remediationData], function (data, error) {
+const finishedPkgData = finishedPkg.getFinishedPackageData();
+merchant.setFinishedPackage([finishedPkgData], function (data, error) {
   if (error)
     throw error;
   console.log(data);
 });
-
 
 // -----
 
