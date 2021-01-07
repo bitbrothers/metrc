@@ -351,16 +351,21 @@ const merchant = new metrc.Merchant({
 //   console.log(data);
 // });
 
-const packageLocation = new metrc.DeliveryPackage({
-  PackageLabel: "ABCDEF012345670000010041",
-  Note: "Package note here."
+const adjustmentPackage = new metrc.DeliveryPackage({
+    Label: "ABCDEF012345670000010041",
+    Quantity: -2.0,
+    UnitOfMeasure: "Ounces",
+    AdjustmentReason: "Drying",
+    AdjustmentDate: "2015-12-15",
+    ReasonNote: null
 });
-const locationData = packageLocation.getLocationFormData();
-merchant.changePackageLocation([locationData], function (data, error) {
+const adjustmentData = adjustmentPackage.getAdjustmentData();
+merchant.adjustPackage([adjustmentData], function (data, error) {
   if (error)
     throw error;
   console.log(data);
 });
+
 
 // -----
 
