@@ -292,44 +292,64 @@ const destinations = [destinationData];
 //   console.log(data);
 // });
 
-const ingredientOne = new metrc.Ingredient({
-  Package: "ABCDEF012345670000010042",
-  Quantity: 8.0,
-  UnitOfMeasure: "Ounces"
-});
+// const ingredientOne = new metrc.Ingredient({
+//   Package: "ABCDEF012345670000010042",
+//   Quantity: 8.0,
+//   UnitOfMeasure: "Ounces"
+// });
 
-const ingredientTwo = new metrc.Ingredient({
-  Package: "ABCDEF012345670000010041",
-  Quantity: 8.0,
-  UnitOfMeasure: "Ounces"
-});
+// const ingredientTwo = new metrc.Ingredient({
+//   Package: "ABCDEF012345670000010041",
+//   Quantity: 8.0,
+//   UnitOfMeasure: "Ounces"
+// });
 
-const package = new metrc.DeliveryPackage({
-  Tag: "ABCDEF012345670000020201",
-  Location: null,
-  Item: "Buds",
-  Quantity: 16.0,
-  UnitOfMeasure: "Ounces",
+// const package = new metrc.DeliveryPackage({
+//   Tag: "ABCDEF012345670000020201",
+//   Location: null,
+//   Item: "Buds",
+//   Quantity: 16.0,
+//   UnitOfMeasure: "Ounces",
+//   PatientLicenseNumber: "X00001",
+//   Note: "This is a note.",
+//   IsProductionBatch: false,
+//   ProductionBatchNumber: null,
+//   IsDonation: false,
+//   ProductRequiresRemediation: false,
+//   UseSameItem: false,
+//   ActualDate: "2015-12-15",
+//   Ingredients: [ingredientOne, ingredientTwo]
+// });
+
+// const packageFormData = package.getFormData();
+// merchant.createPackage([packageFormData],
+//   true,
+//   function (data, error) {
+//     if (error)
+//       throw error;
+//     console.log(data);
+//   });
+
+
+const plantingPackage = metrc.PlantingPackage({
+  PackageLabel: "ABCDEF012345670000010041",
+  PackageAdjustmentAmount: 2.0,
+  PackageAdjustmentUnitOfMeasureName: "Ounces",
+  PlantBatchName: "AK-47 Clone 1/31/2017",
+  PlantBatchType: "Clone",
+  PlantCount: 1,
+  LocationName: "Plant Batch Location",
+  StrainName: "AK-47",
   PatientLicenseNumber: "X00001",
-  Note: "This is a note.",
-  IsProductionBatch: false,
-  ProductionBatchNumber: null,
-  IsDonation: false,
-  ProductRequiresRemediation: false,
-  UseSameItem: false,
-  ActualDate: "2015-12-15",
-  Ingredients: [ingredientOne, ingredientTwo]
+  PlantedDate: "2017-01-31T00:00:00Z",
+  UnpackagedDate: "2017-01-31T00:00:00Z"
 });
-
-const packageFormData = package.getFormData();
-merchant.createPackage([packageFormData],
-  true,
-  function (data, error) {
-    if (error)
-      throw error;
-    console.log(data);
-  });
-
+//[plantingpackage1, pantingPackage2 ....]
+merchant.createPlantingPackage([plantingPackage], function (data, error) {
+  if (error)
+    throw error;
+  console.log(data);
+});
 
 // -----
 
