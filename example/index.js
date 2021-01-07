@@ -253,24 +253,25 @@ const destinations = [destinationData];
 // })
 
 
-const transaction = new metrc.Transaction({
-  PackageLabel: "ABCDEF012345670000010331",
-  Quantity: 1.0,
-  UnitOfMeasure: "Ounces",
-  TotalAmount: 9.99
-});
-let transactionFormData = transaction.getFormData();
-console.log(transactionFormData);
+// const transaction = new metrc.Transaction({
+//   PackageLabel: "ABCDEF012345670000010331",
+//   Quantity: 1.0,
+//   UnitOfMeasure: "Ounces",
+//   TotalAmount: 9.99
+// });
+// let transactionFormData = transaction.getFormData();
+// console.log(transactionFormData);
 
 
-const sale = new metrc.Sale({
-  SalesDateTime: "2016-10-04T16:44:53.000",
-  SalesCustomerType: "Consumer",
-  PatientLicenseNumber: null,
-  CaregiverLicenseNumber: null,
-  IdentificationMethod: null,
-  Transactions: [transactionFormData]
-});
+// const sale = new metrc.Sale({
+//   SalesDateTime: "2016-10-04T16:44:53.000",
+//   SalesCustomerType: "Consumer",
+//   PatientLicenseNumber: null,
+//   CaregiverLicenseNumber: null,
+//   IdentificationMethod: null,
+//   Transactions: [transactionFormData]
+// });
+
 // const saleFormData = sale.getFormData(true);
 // merchant.postSalesReceipt([saleFormData], function (data, error) {
 //   if (error)
@@ -285,11 +286,51 @@ const sale = new metrc.Sale({
 //   console.log(data);
 // });
 
-merchant.sendSalesTransaction([transactionFormData], '2015-01-08', true ,function (data, error) {
-  if (error)
-    throw error;
-  console.log(data);
+// merchant.sendSalesTransaction([transactionFormData], '2015-01-08', true ,function (data, error) {
+//   if (error)
+//     throw error;
+//   console.log(data);
+// });
+
+const ingredientOne = new metrc.Ingredient({
+  Package: "ABCDEF012345670000010042",
+  Quantity: 8.0,
+  UnitOfMeasure: "Ounces"
 });
+
+const ingredientTwo = new metrc.Ingredient({
+  Package: "ABCDEF012345670000010041",
+  Quantity: 8.0,
+  UnitOfMeasure: "Ounces"
+});
+
+const package = new metrc.DeliveryPackage({
+  Tag: "ABCDEF012345670000020201",
+  Location: null,
+  Item: "Buds",
+  Quantity: 16.0,
+  UnitOfMeasure: "Ounces",
+  PatientLicenseNumber: "X00001",
+  Note: "This is a note.",
+  IsProductionBatch: false,
+  ProductionBatchNumber: null,
+  IsDonation: false,
+  ProductRequiresRemediation: false,
+  UseSameItem: false,
+  ActualDate: "2015-12-15",
+  Ingredients: [ingredientOne, ingredientTwo]
+});
+
+const packageFormData = package.getFormData();
+merchant.createPackage([packageFormData],
+  true,
+  function (data, error) {
+    if (error)
+      throw error;
+    console.log(data);
+  });
+
+
 // -----
 
 // const transactionOne = new metrc.PostTransaction({
