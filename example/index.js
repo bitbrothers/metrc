@@ -351,16 +351,14 @@ const merchant = new metrc.Merchant({
 //   console.log(data);
 // });
 
-const adjustmentPackage = new metrc.DeliveryPackage({
-    Label: "ABCDEF012345670000010041",
-    Quantity: -2.0,
-    UnitOfMeasure: "Ounces",
-    AdjustmentReason: "Drying",
-    AdjustmentDate: "2015-12-15",
-    ReasonNote: null
+const remediation = new metrc.DeliveryPackage({
+  PackageLabel: "ABCDEF012345670000020201",
+  RemediationMethodName: "Further Drying",
+  RemediationDate: "2016-10-17",
+  RemediationSteps: "Used hair dryer"
 });
-const adjustmentData = adjustmentPackage.getAdjustmentData();
-merchant.adjustPackage([adjustmentData], function (data, error) {
+const remediationData = remediation.getRemediationData();
+merchant.remediatePackage([remediationData], function (data, error) {
   if (error)
     throw error;
   console.log(data);
