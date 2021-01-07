@@ -364,12 +364,11 @@ const merchant = new metrc.Merchant({
 //   console.log(data);
 // });
 
-const finishedPkg = new metrc.DeliveryPackage({
-  Label: "ABCDEF012345670000010041",
-  ActualDate: "2015-12-15"
+const unFinishedPkg = new metrc.DeliveryPackage({
+  Label: "ABCDEF012345670000010041"
 });
-const finishedPkgData = finishedPkg.getFinishedPackageData();
-merchant.setFinishedPackage([finishedPkgData], function (data, error) {
+const unFinishedPkgData = unFinishedPkg.getUnFinishedPackageData();
+merchant.setUnFinishedPackage([unFinishedPkgData], function (data, error) {
   if (error)
     throw error;
   console.log(data);
