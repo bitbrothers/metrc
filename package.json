@@ -1,6 +1,6 @@
 {
   "name": "metrc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Metrc REST API Node Wrapper",
   "main": "index.js",
   "scripts": {
@@ -10,9 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "metrc": "github:CodeGurukul/metrc#dev"
   },
-  "devDependencies" : {
+  "devDependencies": {
     "dotenv": "^8.2.0"
   }
 }
