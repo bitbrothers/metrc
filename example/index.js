@@ -93,7 +93,7 @@ const merchant = new metrc.Merchant({
 //   console.log(data);
 // });
 
-// merchant.getSalesReciepts({
+// merchant.getSalesReceipts({
 //   lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
 //   lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
 // }, false, function (data, error) {
