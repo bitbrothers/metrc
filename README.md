@@ -44,10 +44,6 @@ This module helps you intregrate metrc REST APIs to your node project.
 ##### Check Merchant's Rejected Transfers
     
     merchant.getRejectedTransfers(
-      {
-        lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
-        lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
-      },
       function response(data, error) {
           if(error)
             throw error
