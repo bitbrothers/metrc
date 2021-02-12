@@ -10,8 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
-    "metrc": "github:CodeGurukul/metrc#dev"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "dotenv": "^8.2.0"
