@@ -1,3 +1,3 @@
-const metrc = require("./lib/metrc");
+const metrc = require('./lib/metrc');
 
 module.exports = metrc;
