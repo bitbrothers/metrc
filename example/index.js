@@ -1,5 +1,5 @@
-const metrc = require("../lib/metrc");
-require('dotenv').config()
+const metrc = require('../lib/metrc');
+require('dotenv').config();
 metrc.config({
   sandbox: process.env.sandbox,
 });
@@ -8,7 +8,6 @@ const merchant = new metrc.Merchant({
   vendorkey: process.env.vendorkey,
   userkey: process.env.userkey,
 });
-
 
 // merchant.getIncomingTransfers({
 //   lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
@@ -26,7 +25,7 @@ const merchant = new metrc.Merchant({
 //   lastModifiedEnd: "2020-08-18T06%3A30%3A00Z",
 //   lastModifiedStart: "2020-08-18T17%3A30%3A00Z",
 // }, function (data, error) {
-//   if (error) 
+//   if (error)
 //     throw error;
 //     console.log(data);
 //   });
@@ -123,7 +122,6 @@ const merchant = new metrc.Merchant({
 //     throw error;
 //   console.log(data);
 // });
-
 
 /**Create a Transfer | POST */
 
@@ -252,7 +250,6 @@ const merchant = new metrc.Merchant({
 //   console.log(data);
 // })
 
-
 // const transaction = new metrc.Transaction({
 //   PackageLabel: "ABCDEF012345670000010331",
 //   Quantity: 1.0,
@@ -261,7 +258,6 @@ const merchant = new metrc.Merchant({
 // });
 // let transactionFormData = transaction.getFormData();
 // console.log(transactionFormData);
-
 
 // const sale = new metrc.Sale({
 //   SalesDateTime: "2016-10-04T16:44:53.000",
@@ -330,7 +326,6 @@ const merchant = new metrc.Merchant({
 //     console.log(data);
 //   });
 
-
 // const plantingPackage = metrc.PlantingPackage({
 //   PackageLabel: "ABCDEF012345670000010041",
 //   PackageAdjustmentAmount: 2.0,
@@ -365,12 +360,11 @@ const merchant = new metrc.Merchant({
 // });
 
 const unFinishedPkg = new metrc.DeliveryPackage({
-  Label: "ABCDEF012345670000010041"
+  Label: 'ABCDEF012345670000010041',
 });
 const unFinishedPkgData = unFinishedPkg.getUnFinishedPackageData();
 merchant.setUnFinishedPackage([unFinishedPkgData], function (data, error) {
-  if (error)
-    throw error;
+  if (error) throw error;
   console.log(data);
 });
 
